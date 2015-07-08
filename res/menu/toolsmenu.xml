@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:title="@string/color">
+        <menu >
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/red" android:title="@string/color_red" android:checked="true"></item>
+                <item android:id="@+id/green" android:title="@string/color_green"></item>
+                <item android:id="@+id/blue" android:title="@string/color_blue"></item>
+                <item android:id="@+id/yellow" android:title="@string/color_yellow"></item>
+                <item android:id="@+id/black" android:title="@string/color_black"></item>
+            </group>
+        </menu>
+	</item>
+	
+    <item android:title="@string/width">
+        <menu >
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/width_1" android:title="@string/width_1" android:checked="true"></item>
+                <item android:id="@+id/width_2" android:title="@string/width_2"></item>
+                <item android:id="@+id/width_3" android:title="@string/width_3"></item>
+            </group>
+        </menu>
+    </item>
+    
+    <item android:title="@string/paint">
+        <menu >
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/line" android:title="@string/line" android:checked="true"></item>
+                <item android:id="@+id/rectangle" android:title="@string/rectangle"></item>
+             <!--  <item android:id="@+id/triangle" android:title="@string/triangle"></item> -->
+                <item android:id="@+id/circle" android:title="@string/circle"></item>
+                <item android:id="@+id/oval" android:title="@string/oval"></item>
+            </group>
+        </menu>
+	</item>
+    
+    <item android:title="@string/clear">
+        <menu >
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/eraser_width_1" android:title="@string/eraser_width_1" android:checked="true"></item>
+                <item android:id="@+id/eraser_width_2" android:title="@string/eraser_width_2"></item>
+                <item android:id="@+id/eraser_width_3" android:title="@string/eraser_width_3"></item>
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/loadBitmap" android:title="@string/loadBitmap"/>
+    <item android:id="@+id/revoke" android:title="@string/revoke"/>
+    <item android:id="@+id/recovery" android:title="@string/recovery"/>
+    <item android:id="@+id/clear" android:title="@string/clearAll"/>
+    <item android:id="@+id/save" android:title="@string/save"/>
+</menu>

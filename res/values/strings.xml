@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Painter</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="color">画笔颜色</string>
+    <string name="color_red">红色</string>
+    <string name="color_green">绿色</string>
+    <string name="color_blue">蓝色</string>
+    <string name="color_yellow">黄色</string>
+    <string name="color_black">黑色</string>
+    <string name="width">画笔宽度</string>
+    <string name="clear">擦除绘画</string>
+    <string name="save">保存绘画</string>
+    <string name="width_1">10</string>
+    <string name="width_2">20</string>
+    <string name="width_3">30</string>
+    <string name="eraser_width_1">30</string>
+    <string name="eraser_width_2">40</string>
+    <string name="eraser_width_3">50</string>
+    <string name="clearAll">清除绘画</string>
+    <string name="paint">绘制图形</string>
+    <string name="rectangle">矩形</string>
+    <string name="triangle">三角形</string>
+    <string name="circle">圆形</string>
+    <string name="oval">椭圆</string>
+    <string name="line">线条</string>
+    <string name="bt_paint">绘画</string>
+    <string name="bt_setting">设置</string>
+    <string name="bt_about">关于我们</string>
+    <string name="bt_update">检查更新</string>
+    <string name="revoke">撤销</string>
+    <string name="recovery">恢复</string>
+    <string name="loadBitmap">加载图片</string>
+    <string name="bt_savepath">存储路径</string>
+    <string name="bt_doublepaint">你画我猜</string>
+    <string name="bt_openbluetooth">打开蓝牙</string>
+    <string name="bt_bluetoothsetting">蓝牙设置</string>
+    <string name="bt_paired">配对设备</string>
+    <string name="bt_scan">搜索设备</string>
+    <string name="tv_status">设备列表</string>
+    <string name="bt_pair">配对</string>
+
+</resources>

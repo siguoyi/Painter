@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/normal_bg">
+    
+    <TextView 
+        android:id="@+id/tv_appName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="50dp"
+        android:text="名  称：Pianter"
+        android:textSize="20sp"
+        />
+	
+    <TextView 
+        android:id="@+id/tv_appType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:text="类  型：休闲 绘画 设计"
+        android:textSize="20sp"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_appFunction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:text="描  述："
+        android:textSize="20sp"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_describe1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:text="1. 这是一款轻量级绘图软件"
+        android:textSize="15sp"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_describe2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:text="2. 具有自定义画线和部分图形的功能"
+        android:textSize="15sp"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_describe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:text="3. 具有绘图保存至本地的功能"
+        android:textSize="15sp"
+        />
+    
+</LinearLayout>
