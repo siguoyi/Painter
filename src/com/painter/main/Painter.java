@@ -1,9 +1,21 @@
 package com.painter.main;
 
+import android.bluetooth.BluetoothDevice;
+
 public class Painter {
 
 	public static volatile int paintFlag = 0;
-	public static volatile int paintWidth = 10;
+	public static volatile int paintWidth = 5;
+	public static BluetoothDevice paintDevice = null;
+	
+	public BluetoothDevice getPaintDevice() {
+		return paintDevice;
+	}
+
+	public static void setPaintDevice(BluetoothDevice paintDevice) {
+		Painter.paintDevice = paintDevice;
+	}
+
 	public static int getPaintWidth() {
 		return paintWidth;
 	}

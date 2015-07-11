@@ -22,13 +22,8 @@ private static final String tag = "Controller";
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	setContentView(R.layout.canvas);
-//    	if(Controller.this.getResources().getConfiguration().orientation
-//    			== Configuration.ORIENTATION_LANDSCAPE){
-//    		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//    	}
+    	Painter.setPaintFlag(0);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//    	ActionBar actionBar = getActionBar();
-//    	actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
 	@Override
@@ -79,32 +74,32 @@ private static final String tag = "Controller";
 			break;
 			
 		case R.id.width_1:
+			dv.paint.setStrokeWidth(5);
+			Painter.setPaintWidth(5);
+			item.setChecked(true);
+			break;
+			
+		case R.id.width_2:
 			dv.paint.setStrokeWidth(10);
 			Painter.setPaintWidth(10);
 			item.setChecked(true);
 			break;
 			
-		case R.id.width_2:
+		case R.id.width_3:
 			dv.paint.setStrokeWidth(20);
 			Painter.setPaintWidth(20);
 			item.setChecked(true);
 			break;
 			
-		case R.id.width_3:
-			dv.paint.setStrokeWidth(30);
-			Painter.setPaintWidth(30);
-			item.setChecked(true);
-			break;
-			
 		case R.id.line:
-			dv.paint.setStrokeWidth(10);
-			Painter.setPaintWidth(10);
+			dv.paint.setStrokeWidth(5);
+			Painter.setPaintWidth(5);
 			Painter.setPaintFlag(0);
 			item.setChecked(true);
 			break;
 		case R.id.rectangle:
-			dv.paint.setStrokeWidth(10);
-			Painter.setPaintWidth(10);
+			dv.paint.setStrokeWidth(5);
+			Painter.setPaintWidth(5);
 			Painter.setPaintFlag(1);
 			item.setChecked(true);
 			break;
@@ -116,36 +111,36 @@ private static final String tag = "Controller";
 //			break;
 			
 		case R.id.circle:
-			dv.paint.setStrokeWidth(10);
-			Painter.setPaintWidth(10);
+			dv.paint.setStrokeWidth(5);
+			Painter.setPaintWidth(5);
 			Painter.setPaintFlag(3);
 			item.setChecked(true);
 			break;
 			
 		case R.id.oval:
-			dv.paint.setStrokeWidth(10);
-			Painter.setPaintWidth(10);
+			dv.paint.setStrokeWidth(5);
+			Painter.setPaintWidth(5);
 			Painter.setPaintFlag(4);
 			item.setChecked(true);
 			break;
 		
 		case R.id.eraser_width_1:
 			Painter.setPaintFlag(0);
-			dv.paint.setStrokeWidth(30);
+			dv.paint.setStrokeWidth(20);
 			item.setChecked(true);
 			dv.clear();
 			break;
 			
 		case R.id.eraser_width_2:
 			Painter.setPaintFlag(0);
-			dv.paint.setStrokeWidth(40);
+			dv.paint.setStrokeWidth(30);
 			item.setChecked(true);
 			dv.clear();
 			break;
 		
 		case R.id.eraser_width_3:
 			Painter.setPaintFlag(0);
-			dv.paint.setStrokeWidth(50);
+			dv.paint.setStrokeWidth(40);
 			item.setChecked(true);
 			dv.clear();
 			break;

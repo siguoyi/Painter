@@ -63,13 +63,13 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+//				Toast.makeText(MainActivity.this, "敬请期待！", Toast.LENGTH_SHORT).show();
 				if(!bluetoothAdapter.isEnabled()){
 					Toast.makeText(MainActivity.this, "请在设置中打开蓝牙,并建立连接！",
 								Toast.LENGTH_SHORT).show();
 				}else{
 					Intent drawGuessIntent = new Intent(MainActivity.this, DrawGuessController.class);
-					startActivity(drawGuessIntent);		
-					new ClientThread().start();
+					startActivity(drawGuessIntent);	
 				}
 			}
 		});

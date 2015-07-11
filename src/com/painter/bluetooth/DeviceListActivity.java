@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import com.example.painter.R;
+import com.painter.main.Painter;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
@@ -29,6 +30,8 @@ public class DeviceListActivity extends Activity {
 	private DeviceListAdapter mAdapter;
 	private ArrayList<BluetoothDevice> mDeviceList;
 	
+	private BluetoothDevice device;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,8 +48,7 @@ public class DeviceListActivity extends Activity {
 		mAdapter.setListener(new DeviceListAdapter.OnPairButtonClickListener() {			
 			@Override
 			public void onPairButtonClick(int position) {
-				BluetoothDevice device = mDeviceList.get(position);
-				
+				 device = mDeviceList.get(position);
 				if (device.getBondState() == BluetoothDevice.BOND_BONDED) {
 					unpairDevice(device);
 				} else {
@@ -78,6 +80,7 @@ public class DeviceListActivity extends Activity {
         try {
             Method method = device.getClass().getMethod("createBond", (Class[]) null);
             method.invoke(device, (Object[]) null);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,10 +101,11 @@ public class DeviceListActivity extends Activity {
 	        String action = intent.getAction();
 	        
 	        if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {	        	
-	        	 final int state 		= intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.ERROR);
-	        	 final int prevState	= intent.getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, BluetoothDevice.ERROR);
+	        	 final int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.ERROR);
+	        	 final int prevState = intent.getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, BluetoothDevice.ERROR);
 	        	 
 	        	 if (state == BluetoothDevice.BOND_BONDED && prevState == BluetoothDevice.BOND_BONDING) {
+	        		 Painter.setPaintDevice(device);
 	        		 showToast("Paired");
 	        	 } else if (state == BluetoothDevice.BOND_NONE && prevState == BluetoothDevice.BOND_BONDED){
 	        		 showToast("Unpaired");

@@ -1,20 +1,19 @@
 package com.painter.bluetooth;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.util.UUID;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 
-public class ServerThread implements Runnable {
+public class ServerThread extends Thread {
 
 	private BluetoothAdapter mAdapter;
 	private BluetoothServerSocket sSocket;
@@ -22,45 +21,62 @@ public class ServerThread implements Runnable {
 	
 	private InputStream mInputStream;
 	private OutputStream mOutputStream;
-	private BufferedReader br;
-	private BufferedWriter bw;
-	PrintStream ps;
-	private byte[] mPath;
+	private Handler mHandler = new Handler();
 	
-	public ServerThread() throws IOException {
-		super();
+	private final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+	
+	public ServerThread(){
+		BluetoothServerSocket tmpSocket = null;
+		mAdapter = BluetoothAdapter.getDefaultAdapter();
+		try {
+			tmpSocket = mAdapter.listenUsingInsecureRfcommWithServiceRecord(getName(), MY_UUID);
+		} catch (Exception e) {
+		}
+		sSocket = tmpSocket;
 	}
 
 	@Override
 	public void run() {
-
-		mAdapter = BluetoothAdapter.getDefaultAdapter();
-		try {
-			sSocket = mAdapter.listenUsingRfcommWithServiceRecord("myBluetoothServerSocket", 
-					UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		while(true){
 			try {
 				mSocket = sSocket.accept();
 			} catch (IOException e) {
-				e.printStackTrace();
+				break;
 			}
 			
 			if(mSocket != null){
 				try {
 					mInputStream = mSocket.getInputStream();
 					mOutputStream = mSocket.getOutputStream();
-					br = new BufferedReader(new InputStreamReader(mInputStream));
-					br.readLine();
-					bw = new BufferedWriter(new OutputStreamWriter(mOutputStream));
+					byte[] buffer = new byte[10];
+					while(true){
+						int bytes = mInputStream.read(buffer);
+						String data = new String(buffer);
+	            		Log.d("receive data from client", "bytes: " + bytes + "data: " + data);
+	            	
+	            		Message msg = new Message();
+	            		msg.what = 0x123;
+	            		msg.obj = bytes;
+	            		mHandler.sendMessage(msg);
+	            		
+	            		mOutputStream.write(new String("456").getBytes());
+					}
+				} catch (Exception e) {
+				}
+				
+
+				try {
+					sSocket.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
 			}
 		}
-	}
-
+	}	
+	
+	 public void cancel() {
+	        try {
+	            sSocket.close();
+	        } catch (IOException e) { }
+	    }
 }

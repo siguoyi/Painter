@@ -82,7 +82,7 @@ public class DrawView extends View {
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
-		paint.setStrokeWidth(10);
+		paint.setStrokeWidth(5);
 		paint.setAntiAlias(true);
 		paint.setDither(true);
 		
@@ -96,7 +96,7 @@ public class DrawView extends View {
 		
 		canvas.drawBitmap(mBitmap, 0, 0, bmpPaint);
 		canvas.drawBitmap(tempBitmap, 0, 0, bmpPaint);
-		Log.d(tag, "onDraw");
+//		Log.d(tag, "onDraw");
 
 		canvas.save(Canvas.ALL_SAVE_FLAG);
 		canvas.restore();
@@ -116,8 +116,7 @@ public class DrawView extends View {
 			path.moveTo(x, y);
 			preX = x;
 			preY = y;
-			
-		
+
 			mCanvas.drawPath(path, paint);
 			invalidate();
 			break;
@@ -128,6 +127,8 @@ public class DrawView extends View {
 			 * Painter.paintFlag为不同的绘制模式
 			 * Painter.paintFlag == 0 表示绘制自定义线条
 			 * Painter.paintFlag == 1 表示绘制自定义矩形
+			 * Painter.paintFlag == 3 表示绘制自定义圆形
+			 * Painter.paintFlag == null 表示绘制自定义椭圆形
 			 */
 			
 			if(Painter.paintFlag == 0){
@@ -170,12 +171,11 @@ public class DrawView extends View {
 			}
 			DrawPath dp = new DrawPath();
 			Path tPath = new Path();
+			Paint tPaint = new Paint(paint);
 			tPath.addPath(path);
 			dp.mPath = tPath;
-			Paint tPaint = new Paint();
-			tPaint = paint;
+//			tPaint = paint;
 			dp.mPaint = tPaint;
-			
 			savePath.add(dp);
 			break;
 		}

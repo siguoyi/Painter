@@ -4,32 +4,25 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Formatter.BigDecimalLayoutForm;
-
 import com.example.painter.R;
 import com.painter.main.Painter;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Path.Direction;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -82,7 +75,7 @@ public class BluetoothView extends View {
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		paint.setStrokeJoin(Paint.Join.ROUND);
-		paint.setStrokeWidth(10);
+		paint.setStrokeWidth(5);
 		paint.setAntiAlias(true);
 		paint.setDither(true);
 		
@@ -96,7 +89,7 @@ public class BluetoothView extends View {
 		
 		canvas.drawBitmap(mBitmap, 0, 0, bmpPaint);
 		canvas.drawBitmap(tempBitmap, 0, 0, bmpPaint);
-		Log.d(tag, "onDraw");
+//		Log.d(tag, "onDraw");
 
 		canvas.save(Canvas.ALL_SAVE_FLAG);
 		canvas.restore();
@@ -128,6 +121,8 @@ public class BluetoothView extends View {
 			 * Painter.paintFlag为不同的绘制模式
 			 * Painter.paintFlag == 0 表示绘制自定义线条
 			 * Painter.paintFlag == 1 表示绘制自定义矩形
+			 * Painter.paintFlag == 3 表示绘制自定义圆形
+			 * Painter.paintFlag == null 表示绘制自定义椭圆形
 			 */
 			
 			if(Painter.paintFlag == 0){
@@ -170,10 +165,13 @@ public class BluetoothView extends View {
 			}
 			DrawPath dp = new DrawPath();
 			Path tPath = new Path();
+			Paint tPaint = new Paint(paint);
 			tPath.addPath(path);
 			dp.mPath = tPath;
-			dp.mPaint = paint;
+//			tPaint = paint;
+			dp.mPaint = tPaint;
 			savePath.add(dp);
+			new ClientThread(Painter.paintDevice).start();
 			break;
 		}
 
