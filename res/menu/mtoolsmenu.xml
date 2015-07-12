@@ -27,7 +27,7 @@
             <group android:checkableBehavior="single">
                 <item android:id="@+id/bline" android:title="@string/line" android:checked="true"></item>
                 <item android:id="@+id/brectangle" android:title="@string/rectangle"></item>
-             <!--  <item android:id="@+id/triangle" android:title="@string/triangle"></item> -->
+                <item android:id="@+id/straightline" android:title="@string/straightline"></item> 
                 <item android:id="@+id/bcircle" android:title="@string/circle"></item>
                 <item android:id="@+id/boval" android:title="@string/oval"></item>
             </group>

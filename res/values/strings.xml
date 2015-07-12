@@ -22,10 +22,10 @@
     <string name="clearAll">清除绘画</string>
     <string name="paint">绘制图形</string>
     <string name="rectangle">矩形</string>
-    <string name="triangle">三角形</string>
+    <string name="straightline">直线</string>
     <string name="circle">圆形</string>
     <string name="oval">椭圆</string>
-    <string name="line">线条</string>
+    <string name="line">自定义线条</string>
     <string name="bt_paint">绘画</string>
     <string name="bt_setting">设置</string>
     <string name="bt_about">关于我们</string>

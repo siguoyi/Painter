@@ -104,11 +104,12 @@ private static final String tag = "Controller";
 			item.setChecked(true);
 			break;
 			
-//		case R.id.triangle:
-//			dv.paint.setStrokeWidth(10);
-//			Painter.setPaintFlag(2);
-//			item.setChecked(true);
-//			break;
+		case R.id.straightline:
+			dv.paint.setStrokeWidth(5);
+			Painter.setPaintWidth(5);
+			Painter.setPaintFlag(2);
+			item.setChecked(true);
+			break;
 			
 		case R.id.circle:
 			dv.paint.setStrokeWidth(5);

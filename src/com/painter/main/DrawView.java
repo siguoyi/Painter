@@ -140,7 +140,8 @@ public class DrawView extends View {
 				tempBitmap.eraseColor(Color.TRANSPARENT);
 				tempCanvas.drawRect(preX,preY,event.getX(),event.getY(),paint);
 			} else if(Painter.paintFlag == 2){
-
+				tempBitmap.eraseColor(Color.TRANSPARENT);
+				tempCanvas.drawLine(preX, preY, x, y, paint);
 			} else if(Painter.paintFlag == 3){
 				tempBitmap.eraseColor(Color.TRANSPARENT);
 				float radius = getRadius(preX,preY,event.getX(),event.getY());
@@ -159,7 +160,8 @@ public class DrawView extends View {
 				mCanvas.drawRect(preX,preY,event.getX(),event.getY(),paint);
 				path.addRect(preX,preY,event.getX(),event.getY(), Path.Direction.CCW);
 			} else if(Painter.paintFlag == 2){
-
+				mCanvas.drawLine(preX, preY, x, y,paint);
+				path.lineTo(x, y);
 			} else if(Painter.paintFlag == 3){
 				float radius = getRadius(preX,preY,event.getX(),event.getY());
 				mCanvas.drawCircle(preX, preY, radius, paint);

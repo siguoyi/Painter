@@ -121,6 +121,7 @@ public class BluetoothView extends View {
 			 * Painter.paintFlag为不同的绘制模式
 			 * Painter.paintFlag == 0 表示绘制自定义线条
 			 * Painter.paintFlag == 1 表示绘制自定义矩形
+			 * Painter.paintFlag == 2 表示绘制自定义直线
 			 * Painter.paintFlag == 3 表示绘制自定义圆形
 			 * Painter.paintFlag == null 表示绘制自定义椭圆形
 			 */
@@ -134,7 +135,8 @@ public class BluetoothView extends View {
 				tempBitmap.eraseColor(Color.TRANSPARENT);
 				tempCanvas.drawRect(preX,preY,event.getX(),event.getY(),paint);
 			} else if(Painter.paintFlag == 2){
-
+				tempBitmap.eraseColor(Color.TRANSPARENT);
+				tempCanvas.drawLine(preX, preY, x, y, paint);
 			} else if(Painter.paintFlag == 3){
 				tempBitmap.eraseColor(Color.TRANSPARENT);
 				float radius = getRadius(preX,preY,event.getX(),event.getY());
@@ -153,7 +155,8 @@ public class BluetoothView extends View {
 				mCanvas.drawRect(preX,preY,event.getX(),event.getY(),paint);
 				path.addRect(preX,preY,event.getX(),event.getY(), Path.Direction.CCW);
 			} else if(Painter.paintFlag == 2){
-
+				mCanvas.drawLine(preX, preY, x, y,paint);
+				path.lineTo(x, y);
 			} else if(Painter.paintFlag == 3){
 				float radius = getRadius(preX,preY,event.getX(),event.getY());
 				mCanvas.drawCircle(preX, preY, radius, paint);

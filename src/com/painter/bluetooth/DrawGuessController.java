@@ -126,7 +126,12 @@ public class DrawGuessController extends Activity {
 					Painter.setPaintFlag(1);
 					item.setChecked(true);
 					break;
-					
+				case R.id.straightline:
+					bv.paint.setStrokeWidth(5);
+					Painter.setPaintWidth(5);
+					Painter.setPaintFlag(2);
+					item.setChecked(true);
+					break;
 				case R.id.bcircle:
 					bv.paint.setStrokeWidth(5);
 					Painter.setPaintFlag(3);
