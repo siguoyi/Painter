@@ -1,13 +1,23 @@
 package com.painter.main;
 
 import android.bluetooth.BluetoothDevice;
+import android.os.Environment;
 
 public class Painter {
 
 	public static volatile int paintFlag = 0;
 	public static volatile int paintWidth = 5;
 	public static BluetoothDevice paintDevice = null;
-	
+	public static volatile boolean paintSocketConnected = false;
+
+	public static boolean isPaintSocketConnected() {
+		return paintSocketConnected;
+	}
+
+	public static void setPaintSocketConnected(boolean paintSocketConnected) {
+		Painter.paintSocketConnected = paintSocketConnected;
+	}
+
 	public BluetoothDevice getPaintDevice() {
 		return paintDevice;
 	}
@@ -25,6 +35,16 @@ public class Painter {
 	}
 
 	public static String savePath = "/mnt/sdcard/painter";
+	public static String loadPath = Environment.getExternalStoragePublicDirectory(
+			Environment.DIRECTORY_DCIM).getAbsolutePath();
+
+	public static String getLoadPath() {
+		return loadPath;
+	}
+
+	public static void setLoadPath(String loadPath) {
+		Painter.loadPath = loadPath;
+	}
 
 	public static String getSavePath() {
 		return savePath;

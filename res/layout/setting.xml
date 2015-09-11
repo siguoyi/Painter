@@ -35,5 +35,15 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/settings_sel"
         android:text="@string/bt_bluetoothsetting" />
+    
+    <Button
+        android:id="@+id/bt_loadpath"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_openblue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/about_sel"
+        android:text="@string/bt_loadpath" />
 
 </RelativeLayout>

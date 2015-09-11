@@ -37,13 +37,13 @@ public class DrawGuessController extends Activity {
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
 				if(msg.what == 0x123){
-					String text = (String) msg.obj;
-					Toast.makeText(DrawGuessController.this,
-							"From Client: " + text, Toast.LENGTH_SHORT).show();
+					BluetoothDrawPath sDrawPath = (BluetoothDrawPath) msg.obj;
+					BluetoothView.savePath.add(sDrawPath);
+					Log.d(tag, "from server");
 				} else if(msg.what == 0x345){
-					String text = (String) msg.obj;
-					Toast.makeText(DrawGuessController.this,
-							"From Server: " + text, Toast.LENGTH_SHORT).show(); 
+					BluetoothDrawPath cDrawPath = (BluetoothDrawPath) msg.obj;
+					BluetoothView.savePath.add(cDrawPath);
+					Log.d(tag, "from client");
 				}
 			}
 		};

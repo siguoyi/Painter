@@ -63,17 +63,17 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-//				Toast.makeText(MainActivity.this, "敬请期待！", Toast.LENGTH_SHORT).show();
-				if(!bluetoothAdapter.isEnabled()){
-					Toast.makeText(MainActivity.this, "请在设置中打开蓝牙！",
-								Toast.LENGTH_SHORT).show();
-				}else if(Painter.paintDevice == null){
-					Toast.makeText(MainActivity.this, "请在设置中进行蓝牙配对！",
-							Toast.LENGTH_SHORT).show();
-				}else{
-					Intent drawGuessIntent = new Intent(MainActivity.this, DrawGuessController.class);
-					startActivity(drawGuessIntent);	
-				}
+				Toast.makeText(MainActivity.this, "敬请期待！", Toast.LENGTH_SHORT).show();
+//				if(!bluetoothAdapter.isEnabled()){
+//					Toast.makeText(MainActivity.this, "请在设置中打开蓝牙！",
+//								Toast.LENGTH_SHORT).show();
+//				}else if(Painter.paintDevice == null){
+//					Toast.makeText(MainActivity.this, "请在设置中进行蓝牙配对！",
+//							Toast.LENGTH_SHORT).show();
+//				}else{
+//					Intent drawGuessIntent = new Intent(MainActivity.this, DrawGuessController.class);
+//					startActivity(drawGuessIntent);
+//				}
 			}
 		});
 		
@@ -92,8 +92,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 	        	LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
 	            final View view = inflater.inflate(R.layout.aboutpanel, null);
-	            @SuppressWarnings("deprecation")
-	    		final PopupWindow pop = new PopupWindow(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT,true);
+	            final PopupWindow pop = new PopupWindow(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT,true);
 	            pop.setTouchable(true);
 	            pop.setOutsideTouchable(true);
 	            pop.showAsDropDown(view);
@@ -105,7 +104,19 @@ public class MainActivity extends Activity {
 	        }
 							
 		});
-    	
+		
+		if(ExistSDCard()){
+			String s = "/storage/sdcard1/DCIM";
+			Painter.setLoadPath(s);
+		}
     }
+    
+    private boolean ExistSDCard() {
+		  if (android.os.Environment.getExternalStorageState().equals(
+		    android.os.Environment.MEDIA_MOUNTED)) {
+		   return true;
+		  } else
+		   return false;
+		 }
 
 }

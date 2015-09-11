@@ -43,7 +43,7 @@
             </group>
         </menu>
     </item>
-    <item android:id="@+id/loadBitmap" android:title="@string/loadBitmap"/>
+    <item android:id="@+id/loadBitmap" android:title="@string/loadBitmap"/> 
     <item android:id="@+id/revoke" android:title="@string/revoke"/>
     <item android:id="@+id/recovery" android:title="@string/recovery"/>
     <item android:id="@+id/clear" android:title="@string/clearAll"/>

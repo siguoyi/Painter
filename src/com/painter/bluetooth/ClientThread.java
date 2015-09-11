@@ -2,8 +2,12 @@ package com.painter.bluetooth;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.UUID;
+
+import com.painter.main.Painter;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -21,9 +25,7 @@ public class ClientThread extends Thread {
     private InputStream mInputStream;
     private OutputStream mOutputStream;
     private final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-       
-    private Handler mHandler = new Handler();
-    
+           
     public ClientThread(BluetoothDevice device) {
         // Use a temporary object that is later assigned to mmSocket,
         // because mmSocket is final
@@ -45,35 +47,28 @@ public class ClientThread extends Thread {
             // Connect the device through the socket. This will block
             // until it succeeds or throws an exception
             mmSocket.connect();
-            if(mmSocket.isConnected()){
-            Log.d(tag, ""+mmSocket.isConnected());
+            while(!mmSocket.isConnected()){}
+            Painter.paintSocketConnected = true;
+            Log.d(tag, "" + mmSocket.isConnected());
+            mOutputStream = mmSocket.getOutputStream();  
             mInputStream = mmSocket.getInputStream();
-            mOutputStream = mmSocket.getOutputStream();
-            mOutputStream.write(new String("123").getBytes());
-            
-            byte[] buffer = new byte[10];
-			while(true){
-				int bytes = mInputStream.read(buffer);
-				String data = new String(buffer);
-        		Log.d("receive data from Server", "bytes: " + bytes + "data: " + data);
-        	
-        		Message msg = new Message();
-        		msg.what = 0x345;
-        		msg.obj = bytes;
-        		mHandler.sendMessage(msg);
-        		}
-			}
+			
         } catch (IOException connectException) {
-            // Unable to connect; close the socket and get out
-            try {
-                mmSocket.close();
-            } catch (IOException closeException) { }
+                try {
+					mmSocket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
             return;
         }
+     }
  
-        // Do work to manage the connection (in a separate thread)
-    }
- 
+//    public static void write(BluetoothDrawPath mDrawPath) {
+//        try {
+//            mOutputStream.writeObject(mDrawPath);
+//        } catch (IOException e) { }
+//    }
+    
     /** Will cancel an in-progress connection, and close the socket */
     public void cancel() {
         try {

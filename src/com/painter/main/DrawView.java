@@ -1,6 +1,7 @@
 package com.painter.main;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +21,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
@@ -54,8 +56,8 @@ public class DrawView extends View {
 	private Canvas mCanvas;
 	private Canvas tempCanvas;
 	
-	public ArrayList<DrawPath> savePath = new ArrayList<DrawView.DrawPath>();
-	public ArrayList<DrawPath> deletePath = new ArrayList<DrawView.DrawPath>();
+	public ArrayList<DrawPath> savePath = new ArrayList<DrawPath>();
+	public ArrayList<DrawPath> deletePath = new ArrayList<DrawPath>();
 	 
 	public DrawView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -73,7 +75,7 @@ public class DrawView extends View {
 		path = new Path();
 		mBitmap = Bitmap.createBitmap(view_width, view_height, Bitmap.Config.ARGB_8888);
 		tempBitmap = Bitmap.createBitmap(view_width, view_height, Bitmap.Config.ARGB_8888);
-		loadBitmap = Bitmap.createBitmap(view_width, view_height, Bitmap.Config.ARGB_8888);
+//		loadBitmap = Bitmap.createBitmap(view_width, view_height, Bitmap.Config.ARGB_8888);
 		mCanvas = new Canvas(mBitmap);
 		tempCanvas = new Canvas(tempBitmap);
 		
@@ -86,7 +88,8 @@ public class DrawView extends View {
 		paint.setAntiAlias(true);
 		paint.setDither(true);
 		
-		
+		Log.d("picture", "width: " + view_width + " " + "height: " 
+				+ view_height);
 	}
 
 	@SuppressLint("DrawAllocation") 
@@ -281,10 +284,6 @@ public class DrawView extends View {
 		invalidate();
 	}
 
-	class DrawPath{
-		Path mPath;
-		Paint mPaint;
-	}
 	
 	 /**
      * 撤销的核心思想就是将画布清空，
@@ -326,11 +325,29 @@ public class DrawView extends View {
 		}
 	}
 
-	public void loadBitmap() {
+	public void loadBitmap(String s) {
 		try {
-			InputStream is = getResources().openRawResource(R.drawable.back);
+			FileInputStream fis = new FileInputStream(new File(s));	
+			Bitmap bitmap = BitmapFactory.decodeStream(fis);
+			int mWidth = bitmap.getWidth();
+			int mHeight = bitmap.getHeight();
 			
-			loadBitmap = BitmapFactory.decodeStream(is);
+			Matrix matrix = new Matrix();
+			
+			float scaleWidth = ((float)view_width)/mWidth;
+			float scaleHeight = ((float)view_height)/mHeight;
+			
+			if(mWidth > mHeight){
+				scaleWidth = ((float)view_width)/mHeight;
+				scaleHeight = ((float)view_height)/mWidth;
+				matrix.postRotate(90);
+			}
+			 
+			matrix.postScale(scaleWidth, scaleHeight);
+			
+			loadBitmap = Bitmap.createBitmap(bitmap, 0, 0, mWidth, mHeight, matrix, true);
+			Log.d("picture", "width: " + loadBitmap.getWidth() + " " + "height: " 
+						+ loadBitmap.getHeight());
 			loadCanvas = new Canvas(mBitmap);
 			loadCanvas.drawBitmap(loadBitmap, 0, 0, null);
 			invalidate();

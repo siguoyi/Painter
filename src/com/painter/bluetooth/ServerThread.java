@@ -2,6 +2,8 @@ package com.painter.bluetooth;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.UUID;
@@ -14,6 +16,8 @@ import android.os.Message;
 import android.util.Log;
 
 public class ServerThread extends Thread {
+	
+	private static final String tag = "ServerThread";
 
 	private BluetoothAdapter mAdapter;
 	private BluetoothServerSocket sSocket;
@@ -21,7 +25,6 @@ public class ServerThread extends Thread {
 	
 	private InputStream mInputStream;
 	private OutputStream mOutputStream;
-	private Handler mHandler = new Handler();
 	
 	private final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 	
@@ -48,23 +51,12 @@ public class ServerThread extends Thread {
 				try {
 					mInputStream = mSocket.getInputStream();
 					mOutputStream = mSocket.getOutputStream();
-					byte[] buffer = new byte[10];
 					while(true){
-						int bytes = mInputStream.read(buffer);
-						String data = new String(buffer);
-	            		Log.d("receive data from client", "bytes: " + bytes + "data: " + data);
-	            	
-	            		Message msg = new Message();
-	            		msg.what = 0x123;
-	            		msg.obj = bytes;
-	            		mHandler.sendMessage(msg);
-	            		
-	            		mOutputStream.write(new String("456").getBytes());
+						Log.d(tag, "receive from client");
+//	            		mOutputStream.write(new String("456").getBytes());
 					}
 				} catch (Exception e) {
 				}
-				
-
 				try {
 					sSocket.close();
 				} catch (IOException e) {

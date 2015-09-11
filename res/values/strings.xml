@@ -41,5 +41,6 @@
     <string name="bt_scan">搜索设备</string>
     <string name="tv_status">设备列表</string>
     <string name="bt_pair">配对</string>
-
+	<string name="bt_loadpath">加载路径</string>
+	<string name="pick">选择</string>
 </resources>

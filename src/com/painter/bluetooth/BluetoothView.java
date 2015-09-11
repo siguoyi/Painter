@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import com.example.painter.R;
 import com.painter.main.Painter;
@@ -21,6 +22,8 @@ import android.graphics.Path;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,8 +50,10 @@ public class BluetoothView extends View {
 	private Canvas mCanvas;
 	private Canvas tempCanvas;
 	
-	public ArrayList<DrawPath> savePath = new ArrayList<BluetoothView.DrawPath>();
-	public ArrayList<DrawPath> deletePath = new ArrayList<BluetoothView.DrawPath>();
+	private ClientThread mThread = new ClientThread(Painter.paintDevice);
+	
+	public static ArrayList<BluetoothDrawPath> savePath = new ArrayList<BluetoothDrawPath>();
+	public static ArrayList<BluetoothDrawPath> deletePath = new ArrayList<BluetoothDrawPath>();
 	 
 	public BluetoothView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -166,15 +171,22 @@ public class BluetoothView extends View {
 				mCanvas.drawOval(oval, paint);
 				path.addOval(oval, Path.Direction.CCW);
 			}
-			DrawPath dp = new DrawPath();
+			BluetoothDrawPath dp = new BluetoothDrawPath();
 			Path tPath = new Path();
 			Paint tPaint = new Paint(paint);
 			tPath.addPath(path);
 			dp.mPath = tPath;
-//			tPaint = paint;
 			dp.mPaint = tPaint;
 			savePath.add(dp);
-			new ClientThread(Painter.paintDevice).start();
+			
+			if(!mThread.isAlive()){
+				mThread.start();
+			}
+			if(Painter.paintSocketConnected){
+//				mThread.write(dp);
+//				new ClientThread(Painter.paintDevice).write(dp);
+				Log.d(tag, "client write");
+			}			
 			break;
 		}
 
@@ -276,11 +288,6 @@ public class BluetoothView extends View {
 		paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
 		invalidate();
 	}
-
-	class DrawPath{
-		Path mPath;
-		Paint mPaint;
-	}
 	
 	 /**
      * 撤销的核心思想就是将画布清空，
@@ -289,15 +296,14 @@ public class BluetoothView extends View {
      */
 	
 	public void revoke(){
-//		initCanvas();
 		if(savePath != null && savePath.size() > 0){
 			Log.v(tag, "savePath.size(): " + savePath.size());
-			DrawPath drawPath = savePath.get(savePath.size() - 1);
+			BluetoothDrawPath drawPath = savePath.get(savePath.size() - 1);
 			deletePath.add(drawPath);
 			Log.v(tag, "deletePath.size():" + deletePath.size());
 			savePath.remove(savePath.size() - 1);
 			clearAll();
-			for(DrawPath dd:savePath){
+			for(BluetoothDrawPath dd:savePath){
 				mCanvas.drawPath(dd.mPath, dd.mPaint);
 				Log.v(tag, "canvas");
 			}
@@ -314,7 +320,7 @@ public class BluetoothView extends View {
 	public void recovery(){
 		if(deletePath.size() > 0){
 			Log.v(tag, "deletePath.size():" + deletePath.size());
-			DrawPath mdrawPath = deletePath.get(deletePath.size() - 1);
+			BluetoothDrawPath mdrawPath = deletePath.get(deletePath.size() - 1);
 			savePath.add(mdrawPath);
 			mCanvas.drawPath(mdrawPath.mPath, mdrawPath.mPaint);
 			deletePath.remove(deletePath.size() - 1);
@@ -334,6 +340,13 @@ public class BluetoothView extends View {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void draw(){
+		BluetoothDrawPath drawPath = savePath.get(savePath.size() - 1);
+		mCanvas.drawPath(drawPath.mPath, drawPath.mPaint);
+		
+		invalidate();
 	}
 
 }

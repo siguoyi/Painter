@@ -1,9 +1,14 @@
 package com.painter.main;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import com.example.painter.R;
+import com.painter.pick.ImagePickActivity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap.Config;
@@ -13,10 +18,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class Controller extends Activity{
 
 private static final String tag = "Controller";
+private static final int SELECT_IMAGES = 1;
+private DrawView dv;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +33,7 @@ private static final String tag = "Controller";
     	setContentView(R.layout.canvas);
     	Painter.setPaintFlag(0);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    	dv = (DrawView) findViewById(R.id.drawView1);
     }
 
 	@Override
@@ -36,7 +46,7 @@ private static final String tag = "Controller";
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-    	DrawView dv = (DrawView) findViewById(R.id.drawView1);
+    	
     	
     	dv.paint.setXfermode(null);
 //    	dv.paint.setStrokeWidth(10);
@@ -147,7 +157,8 @@ private static final String tag = "Controller";
 			break;
 		
 		case R.id.loadBitmap:
-			dv.loadBitmap();
+			picImage();
+//			dv.loadBitmap();
 			break;
 			
 		case R.id.revoke:
@@ -170,4 +181,32 @@ private static final String tag = "Controller";
 		}
     	return true;
     }
+
+	private void picImage() {
+		File mediaStorageDir = new File(Painter.getLoadPath(),"Camera");
+		if(!mediaStorageDir.exists()){
+			Toast.makeText(this, "ÎÞSD¿¨", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		Intent intent = new Intent(Controller.this, ImagePickActivity.class);
+		startActivityForResult(intent, SELECT_IMAGES);
+	}
+	
+	@Override
+		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+			super.onActivityResult(requestCode, resultCode, data);
+			switch(requestCode){
+			case SELECT_IMAGES:
+				if(resultCode == RESULT_OK){
+					ArrayList<String> paths = data.getStringArrayListExtra("IMAGE_PATHS");
+					if(!paths.isEmpty()) {
+						String loadPath = paths.get(0);
+						dv.loadBitmap(loadPath);
+					} else {
+						Toast.makeText(getApplicationContext(), "No such image!", Toast.LENGTH_LONG).show();
+					}
+				}
+				break;
+			}
+		}
 }

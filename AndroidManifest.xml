@@ -33,6 +33,7 @@
         <activity android:name="com.painter.bluetooth.BluetoothSettings"></activity>
         <activity android:name="com.painter.bluetooth.DeviceListActivity"></activity>
         <activity android:name="com.example.testshow.BluetoothShow"></activity>
+        <activity android:name="com.painter.pick.ImagePickActivity"></activity>
     </application>
 
 </manifest>
