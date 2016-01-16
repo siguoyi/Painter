@@ -6,34 +6,65 @@ import java.util.ArrayList;
 import com.example.painter.R;
 import com.painter.pick.ImagePickActivity;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.graphics.Bitmap.Config;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.ContactsContract.CommonDataKinds.Im;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class Controller extends Activity{
+public class Controller extends Activity implements OnClickListener{
 
-private static final String tag = "Controller";
-private static final int SELECT_IMAGES = 1;
-private DrawView dv;
+	private static final String tag = "Controller";
+	private static final int SELECT_IMAGES = 1;
+	private DrawView dv;
+	
+	private ImageButton ib_color;
+	private ImageButton ib_width;
+	private ImageButton ib_shape;
+	private ImageButton ib_eraser;
+	private ImageButton ib_load;
+	private ImageButton ib_undo;
+	private ImageButton ib_redo;
+	private ImageButton ib_delete;
+	private ImageButton ib_save;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-    	setContentView(R.layout.canvas);
+    	setContentView(R.layout.canvas_new);
     	Painter.setPaintFlag(0);
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     	dv = (DrawView) findViewById(R.id.drawView1);
+    	
+    	ib_color = (ImageButton) findViewById(R.id.ib_color);
+    	ib_width = (ImageButton) findViewById(R.id.ib_width);
+    	ib_shape = (ImageButton) findViewById(R.id.ib_shape);
+    	ib_eraser = (ImageButton) findViewById(R.id.ib_eraser);
+    	ib_load = (ImageButton) findViewById(R.id.ib_load);
+    	ib_undo = (ImageButton) findViewById(R.id.ib_undo);
+    	ib_redo = (ImageButton) findViewById(R.id.ib_redo);
+    	ib_delete = (ImageButton) findViewById(R.id.ib_delete);
+    	ib_save = (ImageButton) findViewById(R.id.ib_save);
+    	
+    	ib_color.setOnClickListener(this);
+    	ib_width.setOnClickListener(this);
+    	ib_shape.setOnClickListener(this);
+    	ib_eraser.setOnClickListener(this);
+    	ib_load.setOnClickListener(this);
+    	ib_undo.setOnClickListener(this);
+    	ib_redo.setOnClickListener(this);
+    	ib_delete.setOnClickListener(this);
+    	ib_save.setOnClickListener(this);
+
     }
 
 	@Override
@@ -206,7 +237,12 @@ private DrawView dv;
 						Toast.makeText(getApplicationContext(), "No such image!", Toast.LENGTH_LONG).show();
 					}
 				}
-				break;
-			}
+				break;			}
 		}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -68,7 +68,7 @@ public class Settings extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				
+				Toast.makeText(Settings.this, "还没写完。。", Toast.LENGTH_SHORT).show();
 			}
 		});
 		
@@ -78,8 +78,9 @@ public class Settings extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				Intent bluetoothIntent = new Intent(Settings.this, BluetoothSettings.class);
-				startActivity(bluetoothIntent);
+				Toast.makeText(Settings.this, "还没写完。。", Toast.LENGTH_SHORT).show();
+//				Intent bluetoothIntent = new Intent(Settings.this, BluetoothSettings.class);
+//				startActivity(bluetoothIntent);
 			}
 		});
 		
@@ -121,7 +122,7 @@ public class Settings extends Activity{
 	  					Painter.setLoadPath(s);
 	  					Log.d(tag, "agr2: " + arg2);
 	  				}
-	  				dialog.cancel();  
+	  				dialog.cancel();   
 	  			}  
 	  		}); 
 	}

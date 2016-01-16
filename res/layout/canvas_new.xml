@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout 
+        android:layout_width="40dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="#99CCFF">
+        
+        <ImageButton 
+            android:id="@+id/ib_color"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/im_color"/>
+        
+		<ImageButton 
+            android:id="@+id/ib_width"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_width"/>    
+            
+		<ImageButton 
+            android:id="@+id/ib_shape"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_shape"/>
+        
+		<ImageButton 
+            android:id="@+id/ib_eraser"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_eraser"/> 	
+            
+		<ImageButton 
+            android:id="@+id/ib_load"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_load"/>
+        
+		<ImageButton 
+            android:id="@+id/ib_undo"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_undo"/>    
+            
+		<ImageButton 
+            android:id="@+id/ib_redo"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_redo"/>
+        
+		<ImageButton 
+            android:id="@+id/ib_delete"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_delete"/> 		
+            
+		<ImageButton 
+            android:id="@+id/ib_save"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/im_save"/>			
+        
+    </LinearLayout>
+
+    <FrameLayout 
+	    android:id="@+id/FrameLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+    
+	    <com.painter.main.DrawView 
+	        android:id="@+id/drawView1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        />
+
+	</FrameLayout>
+</LinearLayout>
