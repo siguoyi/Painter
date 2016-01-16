@@ -6,19 +6,15 @@ import java.util.ArrayList;
 import com.example.painter.R;
 import com.painter.pick.ImagePickActivity;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.graphics.Bitmap.Config;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class Controller extends Activity{
