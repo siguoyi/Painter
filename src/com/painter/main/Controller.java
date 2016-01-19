@@ -7,17 +7,22 @@ import com.example.painter.R;
 import com.painter.pick.ImagePickActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Im;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -242,7 +247,45 @@ public class Controller extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.ib_color:
+			setting();
+			break;
+
+		default:
+			break;
+		}
 		
+	}
+
+	private void setting() {
+		AlertDialog dialog = null;
+		AlertDialog.Builder builder = null;
+		View view = LayoutInflater.from(Controller.this).inflate(R.layout.color_dialog, null);
+		builder = new AlertDialog.Builder(Controller.this);
+		builder.setTitle("请选择颜色：");
+		builder.setView(view);
+		builder.setPositiveButton("确定",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				
+			}
+		}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+			}
+		});
+
+		dialog = builder.create();
+		dialog.show();		
+		
+		WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+		params.width = 600;
+		params.height = 1500 ;
+		dialog.getWindow().setAttributes(params);
 	}
 }
