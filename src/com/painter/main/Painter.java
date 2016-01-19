@@ -6,7 +6,16 @@ import android.os.Environment;
 public class Painter {
 
 	public static volatile int paintFlag = 0;
+	public static int getColorPosition() {
+		return colorPosition;
+	}
+
+	public static void setColorPosition(int colorPosition) {
+		Painter.colorPosition = colorPosition;
+	}
+
 	public static volatile int paintWidth = 5;
+	public static volatile int colorPosition = 0;
 	public static BluetoothDevice paintDevice = null;
 	public static volatile boolean paintSocketConnected = false;
 

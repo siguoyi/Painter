@@ -24,6 +24,8 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class Controller extends Activity implements OnClickListener{
@@ -249,7 +251,7 @@ public class Controller extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ib_color:
-			setting();
+			colorSetting();
 			break;
 
 		default:
@@ -258,10 +260,13 @@ public class Controller extends Activity implements OnClickListener{
 		
 	}
 
-	private void setting() {
+	private void colorSetting() {
 		AlertDialog dialog = null;
 		AlertDialog.Builder builder = null;
-		View view = LayoutInflater.from(Controller.this).inflate(R.layout.color_dialog, null);
+		final View view = LayoutInflater.from(Controller.this).inflate(R.layout.color_dialog, null);
+		final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_color);
+		((RadioButton)radioGroup.getChildAt(Painter.colorPosition)).setChecked(true);
+		Log.d("position", "" + Painter.colorPosition);
 		builder = new AlertDialog.Builder(Controller.this);
 		builder.setTitle("请选择颜色：");
 		builder.setView(view);
@@ -269,8 +274,34 @@ public class Controller extends Activity implements OnClickListener{
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				
-				
+				RadioButton radioButton = (RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId());
+				switch (radioButton.getId()) {
+				case R.id.color_red:
+					dv.paint.setStrokeWidth(Painter.getPaintWidth());
+					dv.paint.setColor(Color.RED);
+					Painter.colorPosition = 0;
+					break;
+				case R.id.color_green:
+					dv.paint.setStrokeWidth(Painter.getPaintWidth());
+					dv.paint.setColor(Color.GREEN);
+					Painter.colorPosition = 1;
+					break;
+				case R.id.color_blue:
+					dv.paint.setStrokeWidth(Painter.getPaintWidth());
+					dv.paint.setColor(Color.BLUE);
+					Painter.colorPosition = 2;
+					break;
+				case R.id.color_yellow:
+					dv.paint.setStrokeWidth(Painter.getPaintWidth());
+					dv.paint.setColor(Color.YELLOW);
+					Painter.colorPosition = 3;
+					break;
+				case R.id.color_black:
+					dv.paint.setStrokeWidth(Painter.getPaintWidth());
+					dv.paint.setColor(Color.BLACK);
+					Painter.colorPosition = 4;
+					break;
+				}
 			}
 		}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
 			
