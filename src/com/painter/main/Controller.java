@@ -21,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -47,10 +48,18 @@ public class Controller extends Activity implements OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-    	setContentView(R.layout.canvas_new);
     	Painter.setPaintFlag(0);
+    	requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    	setContentView(R.layout.canvas_new);
     	dv = (DrawView) findViewById(R.id.drawView1);
+    	
+    	Painter.colorPosition = 0;
+    	Painter.eraserPosition = 0;
+    	Painter.shapePosition = 0;
+    	Painter.widthPosition = 0;
+    	Painter.paintWidth = 5;
+    	Painter.paintFlag = 0;
     	
     	ib_color = (ImageButton) findViewById(R.id.ib_color);
     	ib_width = (ImageButton) findViewById(R.id.ib_width);
@@ -222,6 +231,7 @@ public class Controller extends Activity implements OnClickListener{
 
 	private void picImage() {
 		File mediaStorageDir = new File(Painter.getLoadPath(),"Camera");
+		Log.d("load path", "" + Painter.getLoadPath());
 		if(!mediaStorageDir.exists()){
 			Toast.makeText(this, "无SD卡", Toast.LENGTH_SHORT).show();
 			return;

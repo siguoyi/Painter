@@ -1,6 +1,7 @@
 package com.painter.main;
 
 import java.util.ArrayList;
+
 import com.example.painter.R;
 import com.painter.bluetooth.BluetoothSettings;
 
@@ -16,6 +17,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -44,8 +46,9 @@ public class Settings extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.setting);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		setContentView(R.layout.setting);
 
 		bt_savepath = (Button) findViewById(R.id.bt_savepath);
 		bt_update = (Button) findViewById(R.id.bt_update);
@@ -113,8 +116,7 @@ public class Settings extends Activity{
 	  			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,  
 	            long arg3) {  
 	  				if(arg2 == 0){
-	  					String s = Environment.getExternalStoragePublicDirectory(
-	  							Environment.DIRECTORY_DCIM).getAbsolutePath();
+	  					String s = "/storage/sdcard0/DCIM";
 	  					Painter.setLoadPath(s);
 	  					Log.d(tag, "agr2: " + arg2);
 	  				}else if(arg2 == 1){

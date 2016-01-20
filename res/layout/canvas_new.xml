@@ -8,70 +8,70 @@
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="#99CCFF">
+        android:background="#ABCDEF">
         
         <ImageButton 
             android:id="@+id/ib_color"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/im_color"/>
+            android:background="@drawable/color_sel"/>
         
 		<ImageButton 
             android:id="@+id/ib_width"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_width"/>    
+            android:background="@drawable/width_sel"/>    
             
 		<ImageButton 
             android:id="@+id/ib_shape"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_shape"/>
+            android:background="@drawable/shape_sel"/>
         
 		<ImageButton 
             android:id="@+id/ib_eraser"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_eraser"/> 	
+            android:background="@drawable/eraser_sel"/> 	
             
 		<ImageButton 
             android:id="@+id/ib_load"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_load"/>
+            android:background="@drawable/load_sel"/>
         
 		<ImageButton 
             android:id="@+id/ib_undo"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_undo"/>    
+            android:background="@drawable/undo_sel"/>    
             
 		<ImageButton 
             android:id="@+id/ib_redo"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_redo"/>
+            android:background="@drawable/redo_sel"/>
         
 		<ImageButton 
             android:id="@+id/ib_delete"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_delete"/> 		
+            android:background="@drawable/delete_sel"/> 		
             
 		<ImageButton 
             android:id="@+id/ib_save"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/im_save"/>			
+            android:background="@drawable/save_sel"/>			
         
     </LinearLayout>
 

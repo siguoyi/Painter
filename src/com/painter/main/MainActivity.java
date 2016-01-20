@@ -1,6 +1,7 @@
 package com.painter.main;
 
 import com.example.painter.R;
+
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager.LayoutParams;
@@ -32,8 +34,9 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-    	setContentView(R.layout.activity_main);
+    	requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    	setContentView(R.layout.activity_main);
 
     	bt_paint = (Button) findViewById(R.id.bt_paint);
     	bt_doublepaint = (Button) findViewById(R.id.bt_doublepaint);
@@ -114,11 +117,7 @@ public class MainActivity extends Activity {
 	        }
 							
 		});
-		
-		if(ExistSDCard()){
-			String s = "/storage/sdcard1/DCIM";
-			Painter.setLoadPath(s);
-		}
+	
     }
     
     private boolean ExistSDCard() {

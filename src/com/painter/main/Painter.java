@@ -39,8 +39,7 @@ public class Painter {
 	}
 
 	public static String savePath = "/mnt/sdcard/painter";
-	public static String loadPath = Environment.getExternalStoragePublicDirectory(
-			Environment.DIRECTORY_DCIM).getAbsolutePath();
+	public static String loadPath = "/storage/sdcard0/DCIM";
 
 	public static String getLoadPath() {
 		return loadPath;

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -36,6 +37,8 @@ public class ImagePickActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
+
 		setContentView(R.layout.activity_image_pick);
 		mediaStorageDir = new File(Painter.getLoadPath(),"Camera");
 		mImgGrid = (GridView)findViewById(R.id.mImgGrid);
