@@ -6,16 +6,11 @@ import android.os.Environment;
 public class Painter {
 
 	public static volatile int paintFlag = 0;
-	public static int getColorPosition() {
-		return colorPosition;
-	}
-
-	public static void setColorPosition(int colorPosition) {
-		Painter.colorPosition = colorPosition;
-	}
-
 	public static volatile int paintWidth = 5;
 	public static volatile int colorPosition = 0;
+	public static volatile int widthPosition = 0;
+	public static volatile int shapePosition = 0;
+	public static volatile int eraserPosition = 0;
 	public static BluetoothDevice paintDevice = null;
 	public static volatile boolean paintSocketConnected = false;
 
@@ -69,6 +64,38 @@ public class Painter {
 
 	public static void setPaintFlag(int paintFlag) {
 		Painter.paintFlag = paintFlag;
+	}
+	
+	public static int getColorPosition() {
+		return colorPosition;
+	}
+
+	public static void setColorPosition(int colorPosition) {
+		Painter.colorPosition = colorPosition;
+	}
+
+	public static int getWidthPosition() {
+		return widthPosition;
+	}
+
+	public static void setWidthPosition(int widthPosition) {
+		Painter.widthPosition = widthPosition;
+	}
+
+	public static int getShapePosition() {
+		return shapePosition;
+	}
+
+	public static void setShapePosition(int shapePosition) {
+		Painter.shapePosition = shapePosition;
+	}
+
+	public static int getEraserPosition() {
+		return eraserPosition;
+	}
+
+	public static void setEraserPosition(int eraserPosition) {
+		Painter.eraserPosition = eraserPosition;
 	}
 	
 	

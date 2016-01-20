@@ -74,151 +74,151 @@ public class Controller extends Activity implements OnClickListener{
 
     }
 
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-    	MenuInflater inflator = new MenuInflater(this);
-    	inflator.inflate(R.menu.toolsmenu, menu);
-    	
-        return super.onCreateOptionsMenu(menu);
-    }
+//	@Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//    	MenuInflater inflator = new MenuInflater(this);
+//    	inflator.inflate(R.menu.toolsmenu, menu);
+//    	
+//        return super.onCreateOptionsMenu(menu);
+//    }
     
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-    	
-    	
-    	dv.paint.setXfermode(null);
-//    	dv.paint.setStrokeWidth(10);
-    	int id = item.getItemId();
-    	Log.v(tag , "" + id);
-    	switch (id) {
-		case R.id.red:
-			dv.paint.setStrokeWidth(Painter.getPaintWidth());
-			dv.paint.setColor(Color.RED);
-			item.setChecked(true);
-			break;
-			
-		case R.id.green:
-			dv.paint.setStrokeWidth(Painter.getPaintWidth());
-			dv.paint.setColor(Color.GREEN);
-			item.setChecked(true);
-			break;
-			
-		case R.id.blue:
-			dv.paint.setStrokeWidth(Painter.getPaintWidth());
-			dv.paint.setColor(Color.BLUE);
-			item.setChecked(true);
-			break;
-			
-		case R.id.yellow:
-			dv.paint.setStrokeWidth(Painter.getPaintWidth());
-			dv.paint.setColor(Color.YELLOW);
-			item.setChecked(true);
-			break;
-			
-		case R.id.black:
-			dv.paint.setStrokeWidth(Painter.getPaintWidth());
-			dv.paint.setColor(Color.BLACK);
-			item.setChecked(true);
-			break;
-			
-		case R.id.width_1:
-			dv.paint.setStrokeWidth(5);
-			Painter.setPaintWidth(5);
-			item.setChecked(true);
-			break;
-			
-		case R.id.width_2:
-			dv.paint.setStrokeWidth(10);
-			Painter.setPaintWidth(10);
-			item.setChecked(true);
-			break;
-			
-		case R.id.width_3:
-			dv.paint.setStrokeWidth(20);
-			Painter.setPaintWidth(20);
-			item.setChecked(true);
-			break;
-			
-		case R.id.line:
-			dv.paint.setStrokeWidth(5);
-			Painter.setPaintWidth(5);
-			Painter.setPaintFlag(0);
-			item.setChecked(true);
-			break;
-		case R.id.rectangle:
-			dv.paint.setStrokeWidth(5);
-			Painter.setPaintWidth(5);
-			Painter.setPaintFlag(1);
-			item.setChecked(true);
-			break;
-			
-		case R.id.straightline:
-			dv.paint.setStrokeWidth(5);
-			Painter.setPaintWidth(5);
-			Painter.setPaintFlag(2);
-			item.setChecked(true);
-			break;
-			
-		case R.id.circle:
-			dv.paint.setStrokeWidth(5);
-			Painter.setPaintWidth(5);
-			Painter.setPaintFlag(3);
-			item.setChecked(true);
-			break;
-			
-		case R.id.oval:
-			dv.paint.setStrokeWidth(5);
-			Painter.setPaintWidth(5);
-			Painter.setPaintFlag(4);
-			item.setChecked(true);
-			break;
-		
-		case R.id.eraser_width_1:
-			Painter.setPaintFlag(0);
-			dv.paint.setStrokeWidth(20);
-			item.setChecked(true);
-			dv.clear();
-			break;
-			
-		case R.id.eraser_width_2:
-			Painter.setPaintFlag(0);
-			dv.paint.setStrokeWidth(30);
-			item.setChecked(true);
-			dv.clear();
-			break;
-		
-		case R.id.eraser_width_3:
-			Painter.setPaintFlag(0);
-			dv.paint.setStrokeWidth(40);
-			item.setChecked(true);
-			dv.clear();
-			break;
-		
-		case R.id.loadBitmap:
-			picImage();
-//			dv.loadBitmap();
-			break;
-			
-		case R.id.revoke:
-			dv.revoke();
-			break;
-			
-		case R.id.recovery:
-			dv.recovery();
-			break;
-			
-		case R.id.clear:
-			dv.savePath.clear();
-			dv.deletePath.clear();
-			dv.clearAll();
-			break;
-			
-		case R.id.save:
-			dv.save();
-			break;
-		}
-    	return true;
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//    	
+//    	
+//    	dv.paint.setXfermode(null);
+////    	dv.paint.setStrokeWidth(10);
+//    	int id = item.getItemId();
+//    	Log.v(tag , "" + id);
+//    	switch (id) {
+//		case R.id.red:
+//			dv.paint.setStrokeWidth(Painter.getPaintWidth());
+//			dv.paint.setColor(Color.RED);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.green:
+//			dv.paint.setStrokeWidth(Painter.getPaintWidth());
+//			dv.paint.setColor(Color.GREEN);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.blue:
+//			dv.paint.setStrokeWidth(Painter.getPaintWidth());
+//			dv.paint.setColor(Color.BLUE);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.yellow:
+//			dv.paint.setStrokeWidth(Painter.getPaintWidth());
+//			dv.paint.setColor(Color.YELLOW);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.black:
+//			dv.paint.setStrokeWidth(Painter.getPaintWidth());
+//			dv.paint.setColor(Color.BLACK);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.width_1:
+//			dv.paint.setStrokeWidth(5);
+//			Painter.setPaintWidth(5);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.width_2:
+//			dv.paint.setStrokeWidth(10);
+//			Painter.setPaintWidth(10);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.width_3:
+//			dv.paint.setStrokeWidth(20);
+//			Painter.setPaintWidth(20);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.line:
+//			dv.paint.setStrokeWidth(5);
+//			Painter.setPaintWidth(5);
+//			Painter.setPaintFlag(0);
+//			item.setChecked(true);
+//			break;
+//		case R.id.rectangle:
+//			dv.paint.setStrokeWidth(5);
+//			Painter.setPaintWidth(5);
+//			Painter.setPaintFlag(1);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.straightline:
+//			dv.paint.setStrokeWidth(5);
+//			Painter.setPaintWidth(5);
+//			Painter.setPaintFlag(2);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.circle:
+//			dv.paint.setStrokeWidth(5);
+//			Painter.setPaintWidth(5);
+//			Painter.setPaintFlag(3);
+//			item.setChecked(true);
+//			break;
+//			
+//		case R.id.oval:
+//			dv.paint.setStrokeWidth(5);
+//			Painter.setPaintWidth(5);
+//			Painter.setPaintFlag(4);
+//			item.setChecked(true);
+//			break;
+//		
+//		case R.id.eraser_width_1:
+//			Painter.setPaintFlag(0);
+//			dv.paint.setStrokeWidth(20);
+//			item.setChecked(true);
+//			dv.clear();
+//			break;
+//			
+//		case R.id.eraser_width_2:
+//			Painter.setPaintFlag(0);
+//			dv.paint.setStrokeWidth(30);
+//			item.setChecked(true);
+//			dv.clear();
+//			break;
+//		
+//		case R.id.eraser_width_3:
+//			Painter.setPaintFlag(0);
+//			dv.paint.setStrokeWidth(40);
+//			item.setChecked(true);
+//			dv.clear();
+//			break;
+//		
+//		case R.id.loadBitmap:
+//			picImage();
+////			dv.loadBitmap();
+//			break;
+//			
+//		case R.id.revoke:
+//			dv.revoke();
+//			break;
+//			
+//		case R.id.recovery:
+//			dv.recovery();
+//			break;
+//			
+//		case R.id.clear:
+//			dv.savePath.clear();
+//			dv.deletePath.clear();
+//			dv.clearAll();
+//			break;
+//			
+//		case R.id.save:
+//			dv.save();
+//			break;
+//		}
+//    	return true;
+//    }
 
 	private void picImage() {
 		File mediaStorageDir = new File(Painter.getLoadPath(),"Camera");
@@ -253,10 +253,217 @@ public class Controller extends Activity implements OnClickListener{
 		case R.id.ib_color:
 			colorSetting();
 			break;
-
+		case R.id.ib_width:
+			widthSetting();
+			break;
+		case R.id.ib_shape:
+			shapeSetting();
+			break;
+		case R.id.ib_eraser:
+			eraserSetting();
+			break;
+		case R.id.ib_load:
+			picImage();
+//			dv.loadBitmap();
+			break;
+		case R.id.ib_undo:
+			dv.revoke();
+			break;
+			
+		case R.id.ib_redo:
+			dv.recovery();
+			break;
+			
+		case R.id.ib_delete:
+			dv.savePath.clear();
+			dv.deletePath.clear();
+			dv.clearAll();
+			break;
+			
+		case R.id.ib_save:
+			dv.save();
+			break;
 		default:
 			break;
 		}
+		
+	}
+
+	private void eraserSetting() {
+		AlertDialog dialog = null;
+		AlertDialog.Builder builder = null;
+		final View view = LayoutInflater.from(Controller.this).inflate(R.layout.eraser_dialog, null);
+		final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_eraser);
+		((RadioButton)radioGroup.getChildAt(Painter.eraserPosition)).setChecked(true);
+		Log.d("eraser position", "" + Painter.eraserPosition);
+		builder = new AlertDialog.Builder(Controller.this);
+		builder.setTitle("请选择橡皮宽度：");
+		builder.setView(view);
+		builder.setPositiveButton("确定",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				RadioButton radioButton = (RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId());
+				switch (radioButton.getId()) {
+				case R.id.eraser_width_1:
+					Painter.setPaintFlag(0);
+					dv.paint.setStrokeWidth(20);
+					Painter.eraserPosition = 0;
+					dv.clear();
+					break;
+					
+				case R.id.eraser_width_2:
+					Painter.setPaintFlag(0);
+					dv.paint.setStrokeWidth(30);
+					Painter.eraserPosition = 1;
+					dv.clear();
+					break;
+				
+				case R.id.eraser_width_3:
+					Painter.setPaintFlag(0);
+					dv.paint.setStrokeWidth(40);
+					Painter.eraserPosition = 2;
+					dv.clear();
+					break;
+				}
+			}
+		}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+			}
+		});
+
+		dialog = builder.create();
+		dialog.show();		
+		
+		WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+		params.width = 600;
+		params.height = 1500 ;
+		dialog.getWindow().setAttributes(params);
+		
+	}
+
+	private void shapeSetting() {
+		AlertDialog dialog = null;
+		AlertDialog.Builder builder = null;
+		final View view = LayoutInflater.from(Controller.this).inflate(R.layout.shape_dialog, null);
+		final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_shape);
+		((RadioButton)radioGroup.getChildAt(Painter.shapePosition)).setChecked(true);
+		Log.d("shape position", "" + Painter.shapePosition);
+		builder = new AlertDialog.Builder(Controller.this);
+		builder.setTitle("请选择图形：");
+		builder.setView(view);
+		builder.setPositiveButton("确定",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				RadioButton radioButton = (RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId());
+				switch (radioButton.getId()) {
+				case R.id.line:
+					dv.paint.setStrokeWidth(5);
+					Painter.setPaintWidth(5);
+					Painter.setPaintFlag(0);
+					Painter.shapePosition = 0;
+					break;
+				case R.id.rectangle:
+					dv.paint.setStrokeWidth(5);
+					Painter.setPaintWidth(5);
+					Painter.setPaintFlag(1);
+					Painter.shapePosition = 1;
+					break;
+					
+				case R.id.straightline:
+					dv.paint.setStrokeWidth(5);
+					Painter.setPaintWidth(5);
+					Painter.setPaintFlag(2);
+					Painter.shapePosition = 2;
+					break;
+					
+				case R.id.circle:
+					dv.paint.setStrokeWidth(5);
+					Painter.setPaintWidth(5);
+					Painter.setPaintFlag(3);
+					Painter.shapePosition = 3;
+					break;
+					
+				case R.id.oval:
+					dv.paint.setStrokeWidth(5);
+					Painter.setPaintWidth(5);
+					Painter.setPaintFlag(4);
+					Painter.shapePosition = 4;
+					break;
+				}
+			}
+		}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+			}
+		});
+
+		dialog = builder.create();
+		dialog.show();		
+		
+		WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+		params.width = 600;
+		params.height = 1500 ;
+		dialog.getWindow().setAttributes(params);
+		
+	}
+
+	private void widthSetting() {
+		AlertDialog dialog = null;
+		AlertDialog.Builder builder = null;
+		final View view = LayoutInflater.from(Controller.this).inflate(R.layout.width_dialog, null);
+		final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_width);
+		((RadioButton)radioGroup.getChildAt(Painter.widthPosition)).setChecked(true);
+		Log.d("width position", "" + Painter.widthPosition);
+		builder = new AlertDialog.Builder(Controller.this);
+		builder.setTitle("请选择线宽：");
+		builder.setView(view);
+		builder.setPositiveButton("确定",new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				RadioButton radioButton = (RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId());
+				switch (radioButton.getId()) {
+				case R.id.width_1:
+					dv.paint.setStrokeWidth(5);
+					Painter.setPaintWidth(5);
+					Painter.widthPosition = 0;
+					break;
+					
+				case R.id.width_2:
+					dv.paint.setStrokeWidth(10);
+					Painter.setPaintWidth(10);
+					Painter.widthPosition = 1;
+					break;
+					
+				case R.id.width_3:
+					dv.paint.setStrokeWidth(20);
+					Painter.setPaintWidth(20);
+					Painter.widthPosition = 2;
+					break;
+				}
+			}
+		}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+			}
+		});
+
+		dialog = builder.create();
+		dialog.show();		
+		
+		WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+		params.width = 600;
+		params.height = 1500 ;
+		dialog.getWindow().setAttributes(params);
 		
 	}
 
@@ -266,7 +473,7 @@ public class Controller extends Activity implements OnClickListener{
 		final View view = LayoutInflater.from(Controller.this).inflate(R.layout.color_dialog, null);
 		final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_color);
 		((RadioButton)radioGroup.getChildAt(Painter.colorPosition)).setChecked(true);
-		Log.d("position", "" + Painter.colorPosition);
+		Log.d("color position", "" + Painter.colorPosition);
 		builder = new AlertDialog.Builder(Controller.this);
 		builder.setTitle("请选择颜色：");
 		builder.setView(view);
