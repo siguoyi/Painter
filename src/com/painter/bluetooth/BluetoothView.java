@@ -50,7 +50,7 @@ public class BluetoothView extends View {
 	private Canvas mCanvas;
 	private Canvas tempCanvas;
 	
-	private ClientThread mThread = new ClientThread(Painter.paintDevice);
+//	private ClientThread mThread = new ClientThread(Painter.paintDevice);
 	
 	public static ArrayList<BluetoothDrawPath> savePath = new ArrayList<BluetoothDrawPath>();
 	public static ArrayList<BluetoothDrawPath> deletePath = new ArrayList<BluetoothDrawPath>();
@@ -179,9 +179,9 @@ public class BluetoothView extends View {
 			dp.mPaint = tPaint;
 			savePath.add(dp);
 			
-			if(!mThread.isAlive()){
-				mThread.start();
-			}
+//			if(!mThread.isAlive()){
+//				mThread.start();
+//			}
 			if(Painter.paintSocketConnected){
 //				mThread.write(dp);
 //				new ClientThread(Painter.paintDevice).write(dp);

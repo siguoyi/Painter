@@ -12,6 +12,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Im;
 import android.util.Log;
@@ -261,12 +263,15 @@ public class Controller extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ib_color:
+			dv.paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
 			colorSetting();
 			break;
 		case R.id.ib_width:
+			dv.paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
 			widthSetting();
 			break;
 		case R.id.ib_shape:
+			dv.paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
 			shapeSetting();
 			break;
 		case R.id.ib_eraser:
@@ -293,8 +298,7 @@ public class Controller extends Activity implements OnClickListener{
 		case R.id.ib_save:
 			dv.save();
 			break;
-		default:
-			break;
+
 		}
 		
 	}
