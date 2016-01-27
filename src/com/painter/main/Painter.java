@@ -1,12 +1,14 @@
 package com.painter.main;
 
 import android.bluetooth.BluetoothDevice;
+import android.graphics.Color;
 import android.os.Environment;
 
 public class Painter {
 
 	public static volatile int paintFlag = 0;
 	public static volatile int paintWidth = 5;
+	public static volatile int paintColor = Color.RED;
 	public static volatile int colorPosition = 0;
 	public static volatile int widthPosition = 0;
 	public static volatile int shapePosition = 0;
@@ -95,6 +97,14 @@ public class Painter {
 
 	public static void setEraserPosition(int eraserPosition) {
 		Painter.eraserPosition = eraserPosition;
+	}
+
+	public static int getPaintColor() {
+		return paintColor;
+	}
+
+	public static void setPaintColor(int paintColor) {
+		Painter.paintColor = paintColor;
 	}
 	
 	

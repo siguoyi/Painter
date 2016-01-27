@@ -206,6 +206,7 @@ public class DrawView extends View {
 	public void clear(){
 		paint.setXfermode(new PorterDuffXfermode(Mode.CLEAR));
 		tempCanvas.drawPaint(paint);
+
 	}
 	
 	/*

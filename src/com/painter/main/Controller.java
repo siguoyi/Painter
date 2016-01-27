@@ -293,6 +293,14 @@ public class Controller extends Activity implements OnClickListener{
 			dv.savePath.clear();
 			dv.deletePath.clear();
 			dv.clearAll();
+			dv.paint.setStrokeWidth(Painter.paintWidth);
+			dv.paint.setColor(Painter.paintColor);
+//			Painter.colorPosition = 0;
+//	    	Painter.eraserPosition = 0;
+//	    	Painter.shapePosition = 0;
+//	    	Painter.widthPosition = 0;
+//	    	Painter.paintWidth = 5;
+//	    	Painter.paintFlag = 0;
 			break;
 			
 		case R.id.ib_save:
@@ -500,26 +508,31 @@ public class Controller extends Activity implements OnClickListener{
 				case R.id.color_red:
 					dv.paint.setStrokeWidth(Painter.getPaintWidth());
 					dv.paint.setColor(Color.RED);
+					Painter.paintColor = Color.RED;
 					Painter.colorPosition = 0;
 					break;
 				case R.id.color_green:
 					dv.paint.setStrokeWidth(Painter.getPaintWidth());
 					dv.paint.setColor(Color.GREEN);
+					Painter.paintColor = Color.GREEN;
 					Painter.colorPosition = 1;
 					break;
 				case R.id.color_blue:
 					dv.paint.setStrokeWidth(Painter.getPaintWidth());
 					dv.paint.setColor(Color.BLUE);
+					Painter.paintColor = Color.BLUE;
 					Painter.colorPosition = 2;
 					break;
 				case R.id.color_yellow:
 					dv.paint.setStrokeWidth(Painter.getPaintWidth());
 					dv.paint.setColor(Color.YELLOW);
+					Painter.paintColor = Color.YELLOW;
 					Painter.colorPosition = 3;
 					break;
 				case R.id.color_black:
 					dv.paint.setStrokeWidth(Painter.getPaintWidth());
 					dv.paint.setColor(Color.BLACK);
+					Painter.paintColor = Color.BLACK;
 					Painter.colorPosition = 4;
 					break;
 				}
