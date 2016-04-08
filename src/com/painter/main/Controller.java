@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.example.painter.R;
 import com.painter.pick.ImagePickActivity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -37,6 +38,8 @@ public class Controller extends Activity implements OnClickListener{
 	private static final int SELECT_IMAGES = 1;
 	private DrawView dv;
 	
+	private ActionBar actionBar;
+	
 	private ImageButton ib_color;
 	private ImageButton ib_width;
 	private ImageButton ib_shape;
@@ -51,10 +54,14 @@ public class Controller extends Activity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	Painter.setPaintFlag(0);
-    	requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
+//    	requestWindowFeature(Window.FEATURE_NO_TITLE); //设置无标题
     	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     	setContentView(R.layout.canvas_new);
     	dv = (DrawView) findViewById(R.id.drawView1);
+    	
+    	actionBar = getActionBar();
+    	actionBar.setHomeButtonEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
     	
     	Painter.colorPosition = 0;
     	Painter.eraserPosition = 0;
@@ -83,6 +90,23 @@ public class Controller extends Activity implements OnClickListener{
     	ib_delete.setOnClickListener(this);
     	ib_save.setOnClickListener(this);
 
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	if(item.isChecked()){
+			item.setChecked(true);
+		}
+		
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			break;
+
+		}
+		return true;
     }
 
 //	@Override

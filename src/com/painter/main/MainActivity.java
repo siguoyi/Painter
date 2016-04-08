@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-//				Toast.makeText(MainActivity.this, "敬请期待！", Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainActivity.this, "敬请期待！", Toast.LENGTH_SHORT).show();
 //				if(!bluetoothAdapter.isEnabled()){
 //					Toast.makeText(MainActivity.this, "请在设置中打开蓝牙！",
 //								Toast.LENGTH_SHORT).show();
@@ -73,8 +73,8 @@ public class MainActivity extends Activity {
 //					startActivity(drawGuessIntent);
 //				}
 				
-				Intent drawGuessIntent = new Intent(MainActivity.this, DrawGuessController.class);
-				startActivity(drawGuessIntent);
+//				Intent drawGuessIntent = new Intent(MainActivity.this, DrawGuessController.class);
+//				startActivity(drawGuessIntent);
 			}
 		});
 		
